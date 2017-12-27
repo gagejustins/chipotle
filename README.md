@@ -1,2 +1,2 @@
-# chipotle
-Working with a Chipotle dataset.
+# Chipotle
+Same basic analysis on a dataset of Chipotle orders.
