@@ -9,4 +9,4 @@ UPDATE chipotle SET price = REPLACE(price, '$', '');
 UPDATE chipotle SET price = CONVERT(price, DECIMAL(10,2));
 
 #Top 5 most popular items
-SELECT item, COUNT(item) FROM chipotle
+SELECT item, COUNT(item) FROM chipotle GROUP BY item ORDER BY COUNT(item) DESC LIMIT 5;
