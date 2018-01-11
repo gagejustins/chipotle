@@ -10,3 +10,17 @@ UPDATE chipotle SET price = CONVERT(price, DECIMAL(10,2));
 
 #Top 5 most popular items
 SELECT item, COUNT(item) FROM chipotle GROUP BY item ORDER BY COUNT(item) DESC LIMIT 5;
+
+#Distribution of order prices (h/t https://stackoverflow.com/questions/1764881/getting-data-for-histogram-plot)
+SELECT ROUND(price, -1)    AS bucket,
+       COUNT(*)            AS COUNT,
+       RPAD('', LN(COUNT(*)), '*') AS bar
+FROM   chipotle
+GROUP  BY bucket;
+
+#Distribution of revenue
+SELECT ROUND(quantity*price, -1)    AS bucket,
+       COUNT(*)            AS COUNT,
+       RPAD('', LN(COUNT(*)), '*') AS bar
+FROM   chipotle
+GROUP  BY bucket;
