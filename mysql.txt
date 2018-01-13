@@ -9,7 +9,11 @@ UPDATE chipotle SET price = REPLACE(price, '$', '');
 UPDATE chipotle SET price = CONVERT(price, DECIMAL(10,2));
 
 #Top 5 most popular items
-SELECT item, COUNT(item) FROM chipotle GROUP BY item ORDER BY COUNT(item) DESC LIMIT 5;
+SELECT item, COUNT(item) 
+FROM chipotle 
+GROUP BY item 
+ORDER BY COUNT(item) DESC 
+LIMIT 5;
 
 #Distribution of order prices (h/t https://stackoverflow.com/questions/1764881/getting-data-for-histogram-plot)
 SELECT ROUND(price, -1)            AS bucket,
@@ -26,4 +30,23 @@ FROM   chipotle
 GROUP  BY bucket;
 
 #Top 20 orders by total revenue
-SELECT order_id, sum(quantity*price) AS revenue FROM chipotle GROUP BY order_id ORDER BY revenue DESC LIMIT 20;
+SELECT order_id, sum(quantity*price) AS revenue 
+FROM chipotle 
+GROUP BY order_id 
+ORDER BY revenue DESC 
+LIMIT 20;
+
+#Orders typically chosen in the highest quantity, where the item has been ordered > 10 times
+SELECT item, AVG(quantity) 
+FROM chipotle 
+GROUP BY item 
+HAVING COUNT(item) > 10 
+ORDER BY AVG(quantity) DESC 
+LIMIT 10;
+
+
+
+
+
+
+
