@@ -1,5 +1,18 @@
-#Here are the MySQL queries to accomplish the same stuff that's in the main ipynb
-#The database in the following queries is chipotle, and is identical to the one in the ipynb
+#Create table
+CREATE TABLE chipotle (order_id SMALLINT, 
+  quantity SMALLINT, 
+  item VARCHAR(255), 
+  choices VARCHAR(1000), 
+  price VARCHAR(255));
+
+#Load and insert data
+LOAD DATA LOCAL INFILE '~/Desktop/Data_Science/chipotle/chipotle.tsv' 
+INTO TABLE chipotle
+COLUMNS TERMINATED BY '\t';
+
+#Remove header row
+DELETE FROM chipotle 
+LIMIT 1;
 
 #In MySQL, we use similar syntax to convert the item price from a string to a float
 #First remove the dollar sign with:
