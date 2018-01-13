@@ -43,10 +43,3 @@ GROUP BY item
 HAVING COUNT(item) > 10 
 ORDER BY AVG(quantity) DESC 
 LIMIT 10;
-
-
-
-
-
-
-
