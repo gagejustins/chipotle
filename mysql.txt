@@ -8,11 +8,8 @@ CREATE TABLE chipotle (order_id SMALLINT,
 #Load and insert data
 LOAD DATA LOCAL INFILE '~/Desktop/Data_Science/chipotle/chipotle.tsv' 
 INTO TABLE chipotle
-COLUMNS TERMINATED BY '\t';
-
-#Remove header row
-DELETE FROM chipotle 
-LIMIT 1;
+COLUMNS TERMINATED BY '\t'
+IGNORE 1 LINES;
 
 #In MySQL, we use similar syntax to convert the item price from a string to a float
 #First remove the dollar sign with:
